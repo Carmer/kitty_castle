@@ -1,15 +1,9 @@
 class ReservationsController < ApplicationController
   def create
-    credit_card = reservation_params[:credit_card_number]
-    credit_card = credit_card.gsub(/-|\s/,'')
-    reservation_params[:credit_card_number] = credit_card
-
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
       flash[:notice] = "Reservation was created."
-      ReservationMailer.reservation_confirmation(@reservation.kitty).deliver
-      @reservation.kitty.update_attributes(status: “active”)
       redirect_to current_kitty
     else
       render :new
