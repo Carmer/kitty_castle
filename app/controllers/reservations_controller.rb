@@ -12,6 +12,11 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def index
+    @complete   = Reservation.complete
+    @today      = Reservation.today
+    @newer_than = Reservation.newer_than(params[:date])
+  end
 
   private
 
