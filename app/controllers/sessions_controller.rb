@@ -18,4 +18,7 @@ class SessionsController < ApplicationController
     flash[:notice] = "Successfully logged out meow."
     redirect_to root_path
   end
+
+  def new
+  end
 end
