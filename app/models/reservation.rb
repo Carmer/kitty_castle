@@ -4,12 +4,19 @@ class Reservation < ActiveRecord::Base
 
   before_validation :sanitize_credit_card
 
-  scope :complete,   -> { where(complete: true) }
+  def self.complete
+    where(complete: true)
+  end
 
-  scope :today,      -> { where("created_at >= ?",
-                         Time.zone.now.beginning_of_day) }
+  def self.today
+    where("created_at >= ?", Time.zone.now.beginning_of_day)
+  end
 
-  scope :newer_than, ->(date) { where("start_date > ?", date) }
+  def self.newer_than(date)
+    where("start_date > ?", date)
+  end
+
+
 private
 
   def sanitize_credit_card
