@@ -2,6 +2,8 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
 
+    ReservationCompletion.new(@reservation)
+
     if @reservation.save
       flash[:notice] = "Reservation was created."
       redirect_to current_kitty
