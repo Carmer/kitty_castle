@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def index
     @complete   = Reservation.complete
     @today      = Reservation.today
@@ -19,6 +20,8 @@ class ReservationsController < ApplicationController
   end
 
 
+=======
+>>>>>>> add_functionality_to_everything
   private
 
   def reservation_params
