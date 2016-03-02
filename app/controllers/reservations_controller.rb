@@ -4,13 +4,13 @@ class ReservationsController < ApplicationController
     credit_card = credit_card.gsub(/-|\s/,'')
     reservation_params[:credit_card_number] = credit_card
 
-    @order = Order.new(reservation_params)
+    @reservation = Reservation.new(reservation_params)
 
-    if @order.save
-      flash[:notice] = "Order was created."
-      ReservationMailer.order_confirmation(@order.user).deliver
-      @order.user.update_attributes(status: “active”)
-      redirect_to current_user
+    if @reservation.save
+      flash[:notice] = "Reservation was created."
+      ReservationMailer.reservation_confirmation(@reservation.kitty).deliver
+      @reservation.kitty.update_attributes(status: “active”)
+      redirect_to current_kitty
     else
       render :new
     end
