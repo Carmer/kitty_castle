@@ -4,7 +4,7 @@ class Reservation < ActiveRecord::Base
 
   before_validation :sanitize_credit_card
   after_create :send_order_confirmation
-  after_save :set_user_to_active
+  after_save :set_kitty_to_active
 
 private
 
