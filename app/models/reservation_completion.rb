@@ -7,11 +7,9 @@ class ReservationCompletion
   end
 
   def create
-     if reservation.save
-       send_reservation_confirmation
-       set_kitty_to_active
-     end
-   end
+     send_reservation_confirmation
+     set_kitty_to_active
+  end
 
   def send_reservation_confirmation
     ReservationMailer.reservation_confirmation(kitty).deliver
