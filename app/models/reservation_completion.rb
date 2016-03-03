@@ -3,6 +3,7 @@ class ReservationCompletion
 
   def initialize(reservation)
     @reservation = reservation
+    create
   end
 
   def create
