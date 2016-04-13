@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:notice] = "Reservation was created."
-      ReservationMailer.reservation_confirmation(@reservation.kitty).deliver
+      ReservationMailer.reservation_confirmation(@reservation.kitty, @reservation.castle).deliver
       @reservation.kitty.update_attributes(status: “active”)
       redirect_to current_kitty
     else
