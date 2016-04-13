@@ -2,9 +2,9 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
 
-    ReservationCompletion.new(@reservation)
 
     if @reservation.save
+      ReservationCompletion.new(@reservation)
       flash[:notice] = "Reservation was created."
       redirect_to current_kitty
     else
@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @today      = Reservation.today
     @newer_than = Reservation.newer_than(params[:date])
   end
-  
+
   private
 
   def reservation_params
