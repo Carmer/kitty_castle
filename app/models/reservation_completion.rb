@@ -12,7 +12,7 @@ class ReservationCompletion
   end
 
   def send_reservation_confirmation
-    ReservationMailer.reservation_confirmation(kitty).deliver
+    ReservationMailer.reservation_confirmation(reservation.kitty, reservation.castle).deliver
   end
 
   def set_kitty_to_active
