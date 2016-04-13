@@ -13,6 +13,6 @@ class Reservation < ActiveRecord::Base
 private
 
   def sanitize_credit_card
-    credit_card.gsub(/-|\s/,'')
+    credit_card_number.gsub(/-|\s/,'')
   end
 end
