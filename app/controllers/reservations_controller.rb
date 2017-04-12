@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
 
     if @reservation.save
-      ReservationCompletion.new(@reservation).create
+      ReservationCompletion.create(@reservation)
       flash[:notice] = "Reservation was created."
       redirect_to current_kitty
     else
